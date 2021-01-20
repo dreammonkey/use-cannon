@@ -1,7 +1,7 @@
 import * as THREE from 'three'
 import React, { useMemo } from 'react'
 import { Canvas, useFrame } from 'react-three-fiber'
-import { Physics, useBox, usePlane, useSphere } from 'use-cannon'
+import { Physics, useBox, usePlane, useSphere } from '@react-three/cannon'
 import niceColors from 'nice-color-palettes'
 
 function Plane({ color, ...props }) {
@@ -58,7 +58,7 @@ function InstancedSpheres({ number = 100 }) {
 }
 
 export default () => (
-  <Canvas concurrent shadowMap sRGB gl={{ alpha: false }} camera={{ position: [0, -12, 16] }}>
+  <Canvas concurrent shadowMap gl={{ alpha: false }} camera={{ position: [0, -12, 16] }}>
     <hemisphereLight intensity={0.35} />
     <spotLight
       position={[30, 0, 30]}
