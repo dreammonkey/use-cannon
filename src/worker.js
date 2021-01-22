@@ -454,17 +454,15 @@ self.onmessage = (e) => {
         vehicle: vehicle,
         wheels: wheels,
         preStep: () => {
-          if (bodies[chassisBody]) vehicles[uuid].vehicle.updateVehicle(world.dt)
+          vehicles[uuid].vehicle.updateVehicle(world.dt)
         },
         postStep: () => {
-          if (bodies[chassisBody]) {
-            for (let i = 0; i < vehicles[uuid].vehicle.wheelInfos.length; i++) {
-              vehicles[uuid].vehicle.updateWheelTransform(i)
-              const t = vehicles[uuid].vehicle.wheelInfos[i].worldTransform
-              const wheelBody = bodies[vehicles[uuid].wheels[i]]
-              wheelBody.position.copy(t.position)
-              wheelBody.quaternion.copy(t.quaternion)
-            }
+          for (let i = 0; i < vehicles[uuid].vehicle.wheelInfos.length; i++) {
+            vehicles[uuid].vehicle.updateWheelTransform(i)
+            const t = vehicles[uuid].vehicle.wheelInfos[i].worldTransform
+            const wheelBody = bodies[vehicles[uuid].wheels[i]]
+            wheelBody.position.copy(t.position)
+            wheelBody.quaternion.copy(t.quaternion)
           }
         },
       }
