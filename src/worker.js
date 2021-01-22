@@ -454,7 +454,7 @@ self.onmessage = (e) => {
         vehicle: vehicle,
         wheels: wheels,
         preStep: () => {
-          vehicles[uuid].vehicle.updateVehicle(world.dt)
+          if (bodies[chassisBody]) vehicles[uuid].vehicle.updateVehicle(world.dt)
         },
         postStep: () => {
           for (let i = 0; i < vehicles[uuid].vehicle.wheelInfos.length; i++) {
